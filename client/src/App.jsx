@@ -4,7 +4,7 @@ import AppNavBar from './components/AppNavBar.jsx';
 import Home from './components/Home/Home.jsx';
 import Upload from "./components/Upload/Upload.jsx";
 import Gallery from "./components/Gallery/Gallery.jsx";
-import Login from './components/Login/Login.jsx';
+import LoginForm from './components/Login/LoginForm.jsx';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/upload" element={<Upload fileUrl={fileUrl} setFileUrl={setFileUrl}/>} />
         <Route path="/gallery" element={<Gallery />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<LoginForm />} />
       </Routes>
     </Router>
     </>

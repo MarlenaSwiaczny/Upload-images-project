@@ -1,5 +1,4 @@
 import UploadFile from "./UploadFile.jsx";
-import AppNavBar from '../AppNavBar.jsx';
 
 function Upload(props) {
     return (<>
