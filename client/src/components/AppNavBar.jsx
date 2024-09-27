@@ -10,11 +10,11 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { Link } from 'react-router-dom';
+import PermMediaIcon from '@mui/icons-material/PermMedia';
 
 const pages = ['Upload', 'Gallery', 'Login'];
 
-export default function AppNavBar() {
+import { Link } from 'react-router-dom';export default function AppNavBar() {
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -35,14 +35,15 @@ export default function AppNavBar() {
    
     <AppBar position="fixed">
       <Toolbar>
-      <Typography
-            component={Link}
-            to="/"
-            variant="h6"
-          sx={{ flexGrow: 1, display: { xs: 'flex' } }}
-        >
-          LOGO
+      <Typography 
+          color="white"
+          component={Link}
+          to="/"
+          variant="h2"
+          sx={{ flexGrow: 1, display: { xs: 'flex' }}}>
+          <PermMediaIcon />
         </Typography>
+        
 
        
         {isMobile ? (

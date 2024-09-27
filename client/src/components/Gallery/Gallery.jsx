@@ -2,11 +2,20 @@ import React from "react";
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import axios from "axios";
-
+import BasicModal from "./BasicModal";
 
 function Gallery() {
 
     const [images, setImages] = React.useState([])
+
+    const [selectedImage, setSelectedImage] = React.useState(null);
+      
+    function handleClickOpen(event) {
+      const {src, alt} = event.target;
+      console.log({src, alt});
+      setSelectedImage({src, alt})
+    }
+
     
     React.useEffect(() => {
         async function fetchData() {
@@ -18,10 +27,10 @@ function Gallery() {
             console.error("Błąd podczas pobierania obrazów:", error);
         };
       };
-      console.log("Zaktualizowany stan images:", images);
       fetchData();
       }
     , [])
+
 
 
     return (
@@ -31,24 +40,25 @@ function Gallery() {
       {images && images.map((image, index) => (<>
         <ImageListItem key={index}>
          <img 
+         key={index}
          src={image.fileUrl}
          alt={image.fileName}
+         onClick={handleClickOpen}
           />
         </ImageListItem>
       </>))}
     </ImageList>
+    {selectedImage && 
+    <BasicModal 
+      open={Boolean(selectedImage)}
+      src={selectedImage.src} 
+      alt={selectedImage.alt} 
+      onClose={() =>setSelectedImage(null)}
+      />
+    }
       </>
     );
 }
    
 
 export default Gallery;
-
-/*
- <img
-            srcSet={`https://images.unsplash.com/photo-1471357674240-e1a485acb3e1?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            src={`https://images.unsplash.com/photo-1471357674240-e1a485acb3e1?w=164&h=164&fit=crop&auto=format`}
-            alt={image}
-            loading="lazy"
-          />
-*/
